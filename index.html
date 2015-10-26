@@ -109,7 +109,7 @@
 		        line-height: 35px;
 		    }
 		}
-			
+
 
 		div{
 			/*background-position: center;*/
@@ -129,11 +129,35 @@
 			left:60%;
 			top:50%;
 		}
+
+		.show{
+			border:1px solid black;
+			width:90%;
+			height:600px;
+		}
 	</style>
 
 	<script>
 		$(document).ready(function() {
 			console.log( "ready!" );
+
+			function init() {
+    	window.addEventListener('scroll', function(e){
+			    var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+			          shrinkOn = 300,
+			          header = document.querySelector("header");
+			    if (distanceY > shrinkOn) {
+								console.log("should shrink");
+								$("header").toggleClass("smaller");
+								//classie.add(header,"smaller");
+			      } else {
+			            if (classie.has(header,"smaller")) {
+			                classie.remove(header,"smaller");
+			            }
+			        }
+			    });
+			}
+			window.onload = init();
 
 			$("button").click(function() {
 					$("body").toggleClass("focusedBack");
@@ -157,6 +181,13 @@
 	</div>
 </header>
 
+<div class="show">
+	<h4>Image Carousel</h4>
+</div>
+
+<div class="show">
+	<h4>Image Carousel</h4>
+</div>
 <!-- <div id="focus" class="focusedFront">
 	<button>Focus <img src=""></button>
 </div> -->
