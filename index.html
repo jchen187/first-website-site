@@ -67,8 +67,8 @@
 		}
 		header.smaller h1#logo {
 		    width: 150px;
-		    height: 75px;
-		    line-height: 75px;
+		    /*height: 75px;*/
+		    /*line-height: 75px;*/
 		    font-size: 30px;
 		}
 		header.smaller nav a {
@@ -148,12 +148,15 @@
 			          header = document.querySelector("header");
 			    if (distanceY > shrinkOn) {
 								console.log("should shrink");
-								$("header").toggleClass("smaller");
+								$("header").addClass("smaller");
 								//classie.add(header,"smaller");
 			      } else {
-			            if (classie.has(header,"smaller")) {
-			                classie.remove(header,"smaller");
-			            }
+								//check to see what class it is
+								// if ($("header").class)
+								$("header").removeClass("smaller");
+			            // if (classie.has(header,"smaller")) {
+			            //     classie.remove(header,"smaller");
+			            // }
 			        }
 			    });
 			}

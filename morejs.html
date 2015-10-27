@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>javascript</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<!--[if lt IE 9]>
+	<script src="script/html5shiv.js"></script>
+	<![endif]-->
+	<style>
+  </style>
+
+	<script>
+  $(document).ready(function() {
+		var quotes = ["Never give up on your dreams",
+									"If someone else can do it, you can too"];
+
+		quotes.push("Nothing is impossible")
+
+		var s = quotes.indexOf("Nothing is impossible");
+		console.log(s);
+		console.log(quotes[2]);
+
+		var num = Math.floor(Math.random()*2+1);
+		console.log("Random number is " + num);
+
+		var me = [
+			["john","chen"],
+			["cooper","union"]
+		];
+		console.log(me[1][0]);
+
+		//Objects use key(label) value(info itself) relationship
+		var me2 = {
+			"first":"Johnny",
+			"last":"Chen",
+			"school":"Cooper"
+		};
+		console.log(me2.first);
+
+		var car = {
+			"brand":"Audi",
+			"model":"R8",
+			"year":2015,
+			"cost":40000,
+			"color":"red",
+			"used":"brand new",
+			"topSpeed":180,
+			"availableMarkets":["America","Europe"]
+		}
+		console.log(car.topSpeed);
+		$("h1").html("top speed of car is " + car.topSpeed);
+		var changeText = setTimeout(timer,2000);
+		function timer(){
+				$("h1").text("it is " + car.color);
+				console.log("ha");
+				clearTimeout(changeText)
+		}
+		var changeTime = setInterval(timer2,1000);
+		function timer2(){
+				var d = new Date();
+			  var t = d.toLocaleTimeString();
+				$("#time").text(t);
+
+		}
+
+		var myCar = {
+			"brand":"Dodge",
+			"model":"Viper",
+			"yearsInProduction":[2001,2003,2008],
+			"topSpeed":190,
+			"modified":"yes",
+			"modifiedParts":["engine","frame","suspension"],
+			"totalDistanceDriven":5000,
+			"originalCost":15000,
+			"currentOwner": {"first":"James","last":"Qu","paidAmount":5000,"rating":4},
+			"previousOwners": [
+				{"first":"Will","last":"An","paidAmount":6000,"rating":6},
+				{"first":"Man","last":"Aker","paidAmount":7500,"rating":5},
+				{"first":"Bill","last":"Li","paidAmount":10000,"rating":8}
+			]
+		}
+
+    $("button").click(function() {
+        $("body").toggleClass("focusedBack");
+    });
+  });
+
+	</script>
+</head>
+
+<body class="">
+<h1>hi</h1>
+<h3 id="time">The time will be displayed</h3>
+
+</body>
+</html>
