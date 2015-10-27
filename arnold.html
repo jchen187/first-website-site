@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>WHERE I GO TO School</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<!--[if lt IE 9]>
+	<script src="script/html5shiv.js"></script>
+	<![endif]-->
+	<style>
+  </style>
+
+	<script>
+  $(document).ready(function() {
+		var cooper = {
+				"schools":
+				{
+					"Irwin S. Chanin School of Architecture":
+					{
+						"faculty":["Dean Tehrani","Lowder"],
+						"students":
+						{
+							"Freshmen":["Blue","Bo","Natalie"],
+							"Sophomores":["Arnauld", "Julia", "Stephen"],
+							"Juniors":["Not Sure lol"],
+							"Seniors":["Stephanie", "Luke"],
+							"Thesis":["Vincent"]
+						}
+					},
+					"School of Art":
+					{
+						"faculty":["Mike Essl", "Saskia Bos"],
+						"students":
+						{
+							"Freshmen":["Kiersten", "Octavia"],
+							"Sophomores":["Louis", "Julian", "India"],
+							"Juniors":["Jakob"],
+							"Seniors":["Jakob 2"]
+						}
+					},
+					"Albert Nerkin School of Engineering":
+					{
+						"faculty":["Dean Stock", "Fred Fontaine", "Jeff Hakner"],
+						"students":
+						{
+							"majors":
+							{
+								"electricalEngineering":
+								{
+									"Freshmen":["Chris", "Jasmine"],
+									"Sophomores":["Arnold", "Tom", "Yoon"],
+									"Juniors":["Lily", "Victor", "Jeffrey"],
+									"Seniors":["Eugene", "Dennis"]
+								},
+								"mechanicalEngineering":
+								{
+									"Freshmen":["Ostop", "Zach"],
+									"Sophomores":["Karlin", "James", "Andy"],
+									"Juniors":["Jihu", "Calvin", "Zhengqi"],
+									"Seniors":["Jake", "Arven"]
+								},
+								"chemicalEngineering":
+								{
+									"Freshmen":["Austin", "Todd"],
+									"Sophomores":["Ruchi", "Daniel", "Godkin"],
+									"Juniors":["Rebecca", "Grace"],
+									"Seniors":["Matt","Kenny"]
+								},
+								"civilEngineering":
+								{
+									"Freshmen":["Ian", "John"],
+									"Sophomores":["Anton", "Helena", "Brony"],
+									"Juniors":["Johnny"],
+									"Seniors":["Brian", "Nolana", "Jay"]
+								}
+							}
+						}
+					}
+				}
+			}
+
+
+
+			for (var key in cooper){
+				if (cooper.hasOwnProperty(key)){
+					var schools = cooper[key];
+					for (var discipline in schools){
+						if (discipline === "Albert Nerkin School of Engineering"){
+							$("h1").html("Arnold attends the " + discipline);
+						}
+						if (schools.hasOwnProperty(discipline)){
+							var specificSchool = schools[discipline];
+							console.log(specificSchool);
+							//If you are using a variable you need to have []s
+							//console.log(schools.disciplines);
+							var changeTime = setInterval(timer,3000);
+							function timer(){
+								var num = Math.floor(Math.random() * 3);
+								$("h3#first").html("Right now, his favorite teacher is " + cooper.schools[discipline].faculty[num] + ".");
+							}
+						}
+					}
+				}
+			}
+/*
+					.addClass
+					.toggleClass
+					.append
+					.css("background-color")
+
+					$.getJSON(url, function(response){
+					console.log(response._____.)
+				});
+*/
+
+
+  });
+  </script>
+
+	<style>
+	h1{
+		text-align: center;
+	}
+	</style>
+</head>
+
+<body class="">
+<h1></h1>
+<h3 id="first">Who is Arnould's favorite teacher?</h3>
+<h3>It changes every 3 seconds. Cuz he's Arnold.</h3>
+
+</body>
+</html>

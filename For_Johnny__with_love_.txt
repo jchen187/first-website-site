@@ -1,0 +1,68 @@
+var cooper = {
+				"schools":
+				{
+					"Irwin S. Chanin School of Architecture":
+					{
+						"faculty":["Dean Tehrani","Lowder"],
+						"students":
+						{
+							"Freshmen":["Blue", "Bo","Natalie"],
+							"Sophomores":["Arnauld", "Julia", "Stephen"],
+							"Juniors":["Not Sure lol"],
+							"Seniors":["Stephanie", "Luke"],
+							"Thesis":["Vincent"]
+						}
+					},
+					"School of Art":
+					{
+						"faculty":["Mike Essl", "Saskia Bos"],
+						"students":
+						{
+							"Freshmen":["Kiersten", "Octavia"],
+							"Sophomores":["Louis", "Julian", "India"],
+							"Juniors":["Jakob"],
+							"Seniors":["Jakob 2"]
+						}
+					},
+					"Albert Nerkin School of Engineering":
+					{
+						"faculty":["Dean Stock", "Fred Fontaine", "Jeff Hakner"],
+						"students":
+						{
+							"majors"
+							{
+								"electricalEngineering"
+								{
+									"Freshmen":["Chris", "Jasmine"],
+									"Sophomores":["Arnold", "Tom", "Yoon"],
+									"Juniors":["Lily", "Victor", "Jeffrey"],
+									"Seniors":["Eugene", "Dennis"]
+								},
+								"mechanicalEngineering"
+								{
+									"Freshmen":["Ostop", "Zach"],
+									"Sophomores":["Karlin", "James", "Andy"],
+									"Juniors":["Jihu", "Calvin", "Zhengqi"],
+									"Seniors":["Jake", "Arven"]
+								},
+								"chemicalEngineering"
+								{
+									"Freshmen":["Austin", "Todd"],
+									"Sophomores":["Ruchi", "Daniel", "Godkin"],
+									"Juniors":["Rebecca", "Grace"],
+									"Seniors":["Matt","Kenny"]
+								},
+								"civilEngineering"
+								{
+									"Freshmen":["Ian", "John"],
+									"Sophomores":["Anton", "Helena", "Brony"],
+									"Juniors":["Johnny"],
+									"Seniors":["Brian", "Nolana", "Jay"]
+								}
+							}
+						}
+					}
+
+
+				}
+			}
