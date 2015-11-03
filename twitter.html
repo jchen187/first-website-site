@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+
+      //find people that like spectre vs people that dont like
+      //why do we not need document ready
+
+      $.getJSON("http://cooper-union-search-proxy.herokuapp.com/twitter/search/martian%20OR%20spectre?q=%20%3A&geocode=40.748817,-73.985428,1km&result_type=recent",function(response){
+
+        var martianLikes = 0;
+        var spectreLikes = 0;
+        for (var i=0; i<response.statuses.length; i++){
+
+          var strLC = response.statuses[i].text.toLowerCase();
+          if(strLC.search("martian")>=0){
+              martianLikes++;
+          }
+          else if (strLC.search("spectre")>=0){
+              spectreLikes++;
+          }
+        }
+
+        console.log(martianLikes + " are talking about 'Martian' and " + spectreLikes + " people are talking about 'Spectre'.");
+      });
+    </script>
+
+    <style>
+      div {
+        height: 600px;
+        width: 800px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      #one{
+        background-image: url("martian.jpg");
+      }
+      #two{
+        background-image: url("james bond.jpg");
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one">
+
+    </div>
+
+    <div id="two">
+    </div>
+
+  </body>
+</html>
