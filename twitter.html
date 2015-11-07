@@ -4,49 +4,92 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
 
+
+    $(document).ready(function(){
+
       //find people that like spectre vs people that dont like
       //why do we not need document ready
+      var movie = prompt("Which one do you want to see???");
 
-      $.getJSON("http://cooper-union-search-proxy.herokuapp.com/twitter/search/martian%20OR%20spectre?q=%20%3A&geocode=40.748817,-73.985428,1km&result_type=recent",function(response){
+      //this is not good when you have parameters
+      // function changeRadius2(rad)
+      //better to do the way beneath because you can override another method
+      var changeRadius2 = function (rad) {
+        console.log('hi');
+      }
+      $("p").click(changeRadius2);
 
-        var martianLikes = 0;
-        var spectreLikes = 0;
-        for (var i=0; i<response.statuses.length; i++){
 
-          var strLC = response.statuses[i].text.toLowerCase();
-          if(strLC.search("martian")>=0){
-              martianLikes++;
-          }
-          else if (strLC.search("spectre")>=0){
-              spectreLikes++;
-          }
-        }
-
-        console.log(martianLikes + " are talking about 'Martian' and " + spectreLikes + " people are talking about 'Spectre'.");
+      $("p").click(function(){
+        changeRadius();
       });
+
+      function changeRadius() {
+        var radius = prompt('What radius would you like?');
+        var site = "http://cooper-union-search-proxy.herokuapp.com/twitter/search/martian%20OR%20spectre?q=%20%3A&geocode=40.748817,-73.985428,"+radius+"km&result_type=recent";
+        console.log(site);
+
+        $.getJSON(site,function(response){
+
+          var martianLikes = 0;
+          var spectreLikes = 0;
+          for (var i=0; i<response.statuses.length; i++){
+
+            var strLC = response.statuses[i].text.toLowerCase();
+            if(strLC.search("martian")>=0){
+                martianLikes++;
+            }
+            else if (strLC.search("spectre")>=0){
+                spectreLikes++;
+            }
+          }
+
+          if (martianLikes>spectreLikes){
+            $('#top').toggle('.martian');
+            $('#top').toggle('.spectre');
+            $('#bottom').toggle('.spectre');
+            $('#bottom').toggle('.martian');
+          }
+          else {
+            $('#bottom').toggle('.martian');
+            $('#top').toggle('.spectre');
+          }
+          console.log(martianLikes + " are talking about 'Martian' and " + spectreLikes + " people are talking about 'Spectre'.");
+        });
+      };
+
+
+    });
+
+
     </script>
 
     <style>
       div {
-        height: 600px;
-        width: 800px;
+        height: 300px;
+        width: 400px;
         background-size: contain;
         background-repeat: no-repeat;
       }
-      #one{
+      .martian{
         background-image: url("martian.jpg");
+        border: 1px solid blue;
       }
-      #two{
+      .spectre{
         background-image: url("james bond.jpg");
+        border: 1px solid black;
+      }
+      p {
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <div id="one">
+    <div id="top" class="martian">
 
     </div>
-
-    <div id="two">
+    <p>Click to change radius</p>
+    <div id="bottom" class="spectre" >
     </div>
 
   </body>
