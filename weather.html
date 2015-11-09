@@ -103,9 +103,10 @@
             case (diff < 10):
               console.log("You are close");
               //show a happy face
-              $("#face").append("<img src="+happyFace[0]+" />");
-              //$("#face").css("background-image",happyFace[0] );
-              
+              //$("#face").append("<img src="+happyFace[0]+" />");
+              $("#face").css("background-image","url("+happyFace[0]+")" );
+              $("#face").css("background-color","blue" );
+              $("#face").css("background-size","contain" );
               break;
             case (diff < 20):
               console.log("Somewhat");
@@ -128,6 +129,7 @@
       <style>
         body{
           background-color: yellow;
+
         }
         #face, #middle, #bottom, #shoes{
           border: 1px solid black;
@@ -141,18 +143,10 @@
     <div id="temperature"><div>
       <h2>This is what you should be wearing</h2>
       <div id="yourLook">
-        <div id="face">
-          <img src=""/>
-        </div>
-        <div id="middle">
-          <img src="" />
-        </div>
-        <div id="bottom">
-          <img src"" />
-        </div>
-        <div id="shoes">
-          <img src"" />
-        </div>
+        <div id="face">        </div>
+        <div id="middle">        </div>
+        <div id="bottom">        </div>
+        <div id="shoes">        </div>
       </div>
   </body>
 
