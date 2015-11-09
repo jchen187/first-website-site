@@ -52,9 +52,12 @@
         });
     */
 
-        var face ={
+    $(document).ready(function(){
 
-        }
+
+        var happyFace = ["http://www.clker.com/cliparts/5/0/b/c/1195444795826861756Gerald_G_Man_Face_4_-_World_Label.svg","http://cliparts.co/cliparts/gce/EKM/gceEKMjgi.png","http://www.clker.com/cliparts/W/9/q/c/Q/j/man-face-cartoon-hi.png"];
+        var sadFace = ["http://content.mycutegraphics.com/graphics/emotions/girl-sad-face.png","http://www.clipartbest.com/cliparts/yTk/goL/yTkgoL4xc.svg","http://images.clipartpanda.com/sad-girl-stick-figure-sad-girl-hi.png"];
+        var mutualFace = ["https://www.google.com/search?es_sm=91&biw=1280&bih=642&tbm=isch&sa=1&q=face+cartoon&oq=face+cartoon&gs_l=img.3..0l10.1528.1828.0.1972.4.4.0.0.0.0.62.242.4.4.0....0...1c.1.64.img..0.4.240.4r8lokCmRpQ#imgrc=zdh1KI5aNEAD6M%3A","http://rohanishop.com/wp-content/uploads/2013/01/My_Cartoon_Face_With_CorelDraw_by_Danufane.jpg"];
         var clothes = {
           top:{
             hot: ["http://uindy.customu.com/productimages/ATTUB-cartoon-preview-(FF)-OXF.jpg","http://www.customu.com/productimages/ATTUB-cartoon-preview-(FF)-TBK.jpg"] ,
@@ -87,28 +90,46 @@
 
           //when would you want to access data this way
           actual = response.current_observation.temp_c;
-          console.log(actual);
+          console.log("the actual temp is " + actual);
+
+          //set the picture
+
+          //Change how face will look like
+          var think = prompt("How cold do you think it is?");
+          var diff = Math.abs(think - actual);
+          var randNum = Math.floor(Math.random()*3);
+          // console.log("diff =" +diff);
+          switch(true){
+            case (diff < 10):
+              console.log("You are close");
+              //show a happy face
+              $("#face").append("<img src="+happyFace[0]+" />");
+              //$("#face").css("background-image",happyFace[0] );
+              
+              break;
+            case (diff < 20):
+              console.log("Somewhat");
+              //show a mutual face
+              $("#face").append("<img src="+mutualFace[0]+" />");
+              break;
+            default:
+              //show a sad face because so far off
+              $("#face").append("<img src="+sadFace[0]+" />");
+              // $("#face").css("background-image",mutualFace[1] );
+              //$("#face").append("<img src='http://content.mycutegraphics.com/graphics/emotions/girl-sad-face.png'/>");
+              console.log("Not at all");
+
+          }
         });
 
-        var think = prompt("How cold do you think it is?");
 
-        var diff = think - actual;
-        switch(Math.floor(diff)){
-          case 10:
-            console.log("You are close");
-            break;
-          case 20:
-            console.log("Somewhat");
-            break;
-          default:
-            console.log("Not at all");
-        }
+    });
       </script>
       <style>
         body{
           background-color: yellow;
         }
-        #face, #middle, #bottom{
+        #face, #middle, #bottom, #shoes{
           border: 1px solid black;
           width:200px;
           height:200px;
@@ -119,7 +140,7 @@
     <h1>Let Me Choose Your Outfit</h1>
     <div id="temperature"><div>
       <h2>This is what you should be wearing</h2>
-      <div id="">
+      <div id="yourLook">
         <div id="face">
           <img src=""/>
         </div>
@@ -127,6 +148,9 @@
           <img src="" />
         </div>
         <div id="bottom">
+          <img src"" />
+        </div>
+        <div id="shoes">
           <img src"" />
         </div>
       </div>
