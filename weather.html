@@ -55,30 +55,46 @@
     $(document).ready(function(){
 
 
-        var happyFace = ["http://www.clker.com/cliparts/5/0/b/c/1195444795826861756Gerald_G_Man_Face_4_-_World_Label.svg","http://cliparts.co/cliparts/gce/EKM/gceEKMjgi.png","http://www.clker.com/cliparts/W/9/q/c/Q/j/man-face-cartoon-hi.png"];
-        var sadFace = ["http://content.mycutegraphics.com/graphics/emotions/girl-sad-face.png","http://www.clipartbest.com/cliparts/yTk/goL/yTkgoL4xc.svg","http://images.clipartpanda.com/sad-girl-stick-figure-sad-girl-hi.png"];
-        var mutualFace = ["https://www.google.com/search?es_sm=91&biw=1280&bih=642&tbm=isch&sa=1&q=face+cartoon&oq=face+cartoon&gs_l=img.3..0l10.1528.1828.0.1972.4.4.0.0.0.0.62.242.4.4.0....0...1c.1.64.img..0.4.240.4r8lokCmRpQ#imgrc=zdh1KI5aNEAD6M%3A","http://rohanishop.com/wp-content/uploads/2013/01/My_Cartoon_Face_With_CorelDraw_by_Danufane.jpg"];
+        var happyFace = ["http://www.clker.com/cliparts/5/0/b/c/1195444795826861756Gerald_G_Man_Face_4_-_World_Label.svg",
+                          "http://cliparts.co/cliparts/gce/EKM/gceEKMjgi.png",
+                          "http://www.clker.com/cliparts/W/9/q/c/Q/j/man-face-cartoon-hi.png"];
+        var sadFace = ["http://content.mycutegraphics.com/graphics/emotions/girl-sad-face.png",
+                      "http://www.clipartbest.com/cliparts/yTk/goL/yTkgoL4xc.svg",
+                      "http://images.clipartpanda.com/sad-girl-stick-figure-sad-girl-hi.png"];
+        var mutualFace = ["http://www.clipartbest.com/cliparts/biy/p7n/biyp7nL7T.jpeg",
+                          "http://rohanishop.com/wp-content/uploads/2013/01/My_Cartoon_Face_With_CorelDraw_by_Danufane.jpg"];
         var clothes = {
           top:{
-            hot: ["http://uindy.customu.com/productimages/ATTUB-cartoon-preview-(FF)-OXF.jpg","http://www.customu.com/productimages/ATTUB-cartoon-preview-(FF)-TBK.jpg"] ,
-            warm:["http://content.mycutegraphics.com/graphics/clothing/gray-tshirt.png","http://www.clker.com/cliparts/5/G/f/d/R/E/red-t-shirt-hi.png"] ,
+            hot: ["http://uindy.customu.com/productimages/ATTUB-cartoon-preview-(FF)-OXF.jpg",
+                  "http://www.customu.com/productimages/ATTUB-cartoon-preview-(FF)-TBK.jpg"] ,
+            warm:["http://content.mycutegraphics.com/graphics/clothing/gray-tshirt.png",
+                  "http://www.clker.com/cliparts/5/G/f/d/R/E/red-t-shirt-hi.png"] ,
             cool:["http://cdn.pastemagazine.com/www/system/images/photo_albums/mens-shirts-ties/large/shirts8.jpg?1384968217",
-            "https://www.google.com/search?es_sm=91&biw=1280&bih=598&tbs=isz%3Am&tbm=isch&sa=1&q=shirt+cartoon&oq=shirt+cartoon&gs_l=img.3..0l5j0i7i30l5.8785.10447.0.10567.10.10.0.0.0.0.72.582.10.10.0....0...1c.1.64.img..0.10.579.E52GLa2XCoE#imgdii=c5Er08pYGVKKSM%3A%3Bc5Er08pYGVKKSM%3A%3BJ0ax4wn4dpzowM%3A&imgrc=c5Er08pYGVKKSM%3A"] ,
+                  "https://www.google.com/search?es_sm=91&biw=1280&bih=598&tbs=isz%3Am&tbm=isch&sa=1&q=shirt+cartoon&oq=shirt+cartoon&gs_l=img.3..0l5j0i7i30l5.8785.10447.0.10567.10.10.0.0.0.0.72.582.10.10.0....0...1c.1.64.img..0.10.579.E52GLa2XCoE#imgdii=c5Er08pYGVKKSM%3A%3Bc5Er08pYGVKKSM%3A%3BJ0ax4wn4dpzowM%3A&imgrc=c5Er08pYGVKKSM%3A"] ,
             cold:["http://www.cliparts101.com/files/538/011FEB6DBBC7B351535E81452087F9AF/Jacket__Leather_07.png",
-            "http://cliparts101.com/files/344/5993F380F56EA45972DB4FDB329414B0/Jacket__Leather_05.png",
-            "https://www.google.com/search?es_sm=91&biw=1280&bih=598&tbs=isz%3Am&tbm=isch&sa=1&q=jacket+cartoon&oq=jacket+cartoon&gs_l=img.3..0l3j0i7i30l2j0i30j0i5i30l4.20997.21691.0.21803.6.6.0.0.0.0.80.348.6.6.0....0...1c.1.64.img..0.6.347.Swz0_0dz_AI#imgdii=jNxo7Zxipbjc6M%3A%3BjNxo7Zxipbjc6M%3A%3BXzw8O9qGe6fDJM%3A&imgrc=jNxo7Zxipbjc6M%3A"]
+                  "http://cliparts101.com/files/344/5993F380F56EA45972DB4FDB329414B0/Jacket__Leather_05.png",
+                  "https://www.google.com/search?es_sm=91&biw=1280&bih=598&tbs=isz%3Am&tbm=isch&sa=1&q=jacket+cartoon&oq=jacket+cartoon&gs_l=img.3..0l3j0i7i30l2j0i30j0i5i30l4.20997.21691.0.21803.6.6.0.0.0.0.80.348.6.6.0....0...1c.1.64.img..0.6.347.Swz0_0dz_AI#imgdii=jNxo7Zxipbjc6M%3A%3BjNxo7Zxipbjc6M%3A%3BXzw8O9qGe6fDJM%3A&imgrc=jNxo7Zxipbjc6M%3A"]
           },
           bottom:{
-            hot: ["http://www.cliparthut.com/clip-arts/324/shorts-clip-art-324719.png","http://images.clipartpanda.com/shorts-clipart-beach_shorts_54594.jpg","http://www.clker.com/cliparts/H/C/v/m/c/E/green-swim-shorts-hi.png"] ,
-            warm:["http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=9627041","http://www.clker.com/cliparts/E/t/4/W/A/v/shorts.svg"] ,
-            cool:["http://www.easterseals-ci.org/denim_days/j0113476.gif","https://sites.google.com/site/jeansbankdotorg/home/Jeans%20Bank%20Clip%20Art.png"] ,
-            cold:["http://www.clker.com/cliparts/Z/s/8/U/u/L/the-elf-pants-hi.png","http://www.sportschrank.de/out/drawing/17/zoom/017440-0-7096.jpg","http://backroadsigns.com/highslide/slideshow/apparel/sweatpant.jpg"] ,
+            hot: ["http://www.cliparthut.com/clip-arts/324/shorts-clip-art-324719.png",
+                  "http://images.clipartpanda.com/shorts-clipart-beach_shorts_54594.jpg",
+                  "http://www.clker.com/cliparts/H/C/v/m/c/E/green-swim-shorts-hi.png"] ,
+            warm:["http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=9627041",
+                  "http://www.clker.com/cliparts/E/t/4/W/A/v/shorts.svg"] ,
+            cool:["http://www.easterseals-ci.org/denim_days/j0113476.gif",
+                  "https://sites.google.com/site/jeansbankdotorg/home/Jeans%20Bank%20Clip%20Art.png"] ,
+            cold:["http://www.clker.com/cliparts/Z/s/8/U/u/L/the-elf-pants-hi.png",
+                  "http://www.sportschrank.de/out/drawing/17/zoom/017440-0-7096.jpg","http://backroadsigns.com/highslide/slideshow/apparel/sweatpant.jpg"] ,
           },
           shoes:{
-            hot: ["http://www.decalmenow.com/fpdb/images/FlipFlopOrig.gif","http://clipartzebraz.com/test_im.php?pic=/cliparts/sandals-clipart/vrem_9.jpg"] ,
-            warm:["http://images.clipartpanda.com/sneakers-clipart-tennis-shoes-hi.png","http://1.bp.blogspot.com/_ahcy_HfMNKQ/TLOZH4sIFQI/AAAAAAAACL0/IWIG5IY5Omk/s1600/design_converse_line_art_by_michexist.jpg"] ,
-            cool:["http://images.clipartpanda.com/shoe-clip-art-pT5pxpATB.jpeg","http://www.clker.com/cliparts/0/b/0/e/14012901471070509257Sneakers.svg"] ,
-            cold:["http://images.clipartpanda.com/snow-boots-clipart-boots-20clip-20art-nTBGMdL8c.png","http://images.clipartpanda.com/winter-boots-clipart-dc7Goazc9.gif"] ,
+            hot: ["http://www.decalmenow.com/fpdb/images/FlipFlopOrig.gif",
+                  "http://clipartzebraz.com/test_im.php?pic=/cliparts/sandals-clipart/vrem_9.jpg"] ,
+            warm:["http://images.clipartpanda.com/sneakers-clipart-tennis-shoes-hi.png",
+                  "http://1.bp.blogspot.com/_ahcy_HfMNKQ/TLOZH4sIFQI/AAAAAAAACL0/IWIG5IY5Omk/s1600/design_converse_line_art_by_michexist.jpg"] ,
+            cool:["http://images.clipartpanda.com/shoe-clip-art-pT5pxpATB.jpeg",
+                  "http://www.clker.com/cliparts/0/b/0/e/14012901471070509257Sneakers.svg"] ,
+            cold:["http://images.clipartpanda.com/snow-boots-clipart-boots-20clip-20art-nTBGMdL8c.png",
+                  "http://images.clipartpanda.com/winter-boots-clipart-dc7Goazc9.gif"] ,
           }
         };
 
@@ -93,30 +109,41 @@
           console.log("the actual temp is " + actual);
 
           //set the picture
-
+          $("#face").css("background-size","contain" );
+          $("#face").css("background-repeat","no-repeat" );
+          $("#face").css("background-position","center" );
           //Change how face will look like
           var think = prompt("How cold do you think it is?");
           var diff = Math.abs(think - actual);
           var randNum = Math.floor(Math.random()*3);
+          console.log("Random Number is " + randNum);
           // console.log("diff =" +diff);
           switch(true){
             case (diff < 10):
               console.log("You are close");
               //show a happy face
               //$("#face").append("<img src="+happyFace[0]+" />");
-              $("#face").css("background-image","url("+happyFace[0]+")" );
-              $("#face").css("background-color","blue" );
-              $("#face").css("background-size","contain" );
+              $("#face").css("background-image","url("+happyFace[randNum]+")" );
+              $("#face").css("background-color","skyblue" );
               break;
             case (diff < 20):
               console.log("Somewhat");
               //show a mutual face
-              $("#face").append("<img src="+mutualFace[0]+" />");
+              //have to redeclare for mutual face
+              var randNum = Math.floor(Math.random()*2);
+              // $("#face").append("<img src="+mutualFace[0]+" />");
+              $("#face").css("background-image","url("+mutualFace[randNum]+")" );
+              $("#face").css("background-color","lightgreen" );
+
+
               break;
             default:
               //show a sad face because so far off
-              $("#face").append("<img src="+sadFace[0]+" />");
+              //$("#face").append("<img src="+sadFace[randNum]+" />");
               // $("#face").css("background-image",mutualFace[1] );
+              $("#face").css("background-image","url("+sadFace[randNum]+")" );
+              $("#face").css("background-color","grey" );
+
               //$("#face").append("<img src='http://content.mycutegraphics.com/graphics/emotions/girl-sad-face.png'/>");
               console.log("Not at all");
 
@@ -128,13 +155,18 @@
       </script>
       <style>
         body{
-          background-color: yellow;
+          background-color: lightyellow;
 
         }
-        #face, #middle, #bottom, #shoes{
+        #face, #middle, #bottom{
           border: 1px solid black;
           width:200px;
           height:200px;
+        }
+        #shoes{
+          border: 1px solid black;
+          width:200px;
+          height:100px;
         }
       </style>
   </head>
