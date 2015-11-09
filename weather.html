@@ -70,7 +70,7 @@
             warm:["http://content.mycutegraphics.com/graphics/clothing/gray-tshirt.png",
                   "http://www.clker.com/cliparts/5/G/f/d/R/E/red-t-shirt-hi.png"] ,
             cool:["http://cdn.pastemagazine.com/www/system/images/photo_albums/mens-shirts-ties/large/shirts8.jpg?1384968217",
-                  "http://cdn.pastemagazine.com/www/system/images/photo_albums/mens-shirts-ties/large/shirts8.jpg?1384968217"] ,
+                  "http://www.tshirtshack.com/stock/product/large/Gildan-Ultra-Cotton-Long-Sleeve-T-Shirt-G2400.jpg"] ,
             cold:["http://www.cliparts101.com/files/538/011FEB6DBBC7B351535E81452087F9AF/Jacket__Leather_07.png",
                   "http://cliparts101.com/files/344/5993F380F56EA45972DB4FDB329414B0/Jacket__Leather_05.png",
                   "http://www.clker.com/cliparts/2/1/8/f/1240167174328127397okiimatsu_leather_jacket.svg.hi.png"]
@@ -105,13 +105,54 @@
           console.log(response);
 
           //when would you want to access data this way
-          actual = response.current_observation.temp_c;
+          actual = response.current_observation.temp_f;
           console.log("the actual temp is " + actual);
 
-          //set the picture
+          var weather = (actual < 50) ? "cold" :
+                        (actual < 65) ? "cool" :
+                        (actual < 80) ? "warm" :
+                        "hot";
+          console.log(weather);
+
+          var randNum = Math.floor(Math.random()*2);
+          if (weather === "cold"){
+            randNum = Math.floor(Math.random()*3);
+          }
+          console.log(randNum);
+          //pick the clothes accordingly
+          $("#middle").css("background-size","contain" );
+          $("#middle").css("background-repeat","no-repeat" );
+          $("#middle").css("background-position","center" );
+          $("#middle").css("background-image","url("+clothes.top[weather][randNum]+")" );
+
+          randNum = Math.floor(Math.random()*2);
+          if (weather === "hot"){
+            randNum = Math.floor(Math.random()*3);
+          }
+          $("#bottom").css("background-size","contain" );
+          $("#bottom").css("background-repeat","no-repeat" );
+          $("#bottom").css("background-position","center" );
+          $("#bottom").css("background-image","url("+clothes.bottom[weather][randNum]+")" );
+
+          randNum = Math.floor(Math.random()*2);
+          $("#shoes").css("background-size","contain" );
+          $("#shoes").css("background-repeat","no-repeat" );
+          $("#shoes").css("background-position","center" );
+          $("#shoes").css("background-image","url("+clothes.shoes[weather][randNum]+")" );
+/*
+          var container = $("yourLook");
+          for each (var div in container){
+            $("#face").css("background-size","contain" );
+            $("#face").css("background-repeat","no-repeat" );
+            $("#face").css("background-position","center" );
+          }
+*/
+
+
           $("#face").css("background-size","contain" );
           $("#face").css("background-repeat","no-repeat" );
           $("#face").css("background-position","center" );
+
           //Change how face will look like
           var think = prompt("How cold do you think it is?");
           var diff = Math.abs(think - actual);
@@ -156,7 +197,6 @@
       <style>
         body{
           background-color: lightyellow;
-
         }
         #face, #middle, #bottom{
           border: 1px solid black;
