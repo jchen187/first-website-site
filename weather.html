@@ -121,10 +121,10 @@
           console.log(randNum);
           //pick the clothes accordingly
           var container = $("#yourLook");
-          for (var div in container){
-            div.css("background-size","contain" );
-            div.css("background-repeat","no-repeat" );
-            div.css("background-position","center" );
+          for (var d in container){
+            $(d).css("backgroundSize","contain" );
+            $(d).css("backgroundRepeat","no-repeat" );
+            $(d).css("backgroundPosition","center" );
           }
 
           // $("#middle").css("background-size","contain" );

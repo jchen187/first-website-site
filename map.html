@@ -29,6 +29,27 @@
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
 
+        var bull = {
+          position: new google.maps.LatLng(40.7029743,-74.0365618),
+          map: map,
+          title:"The Charging Bull"
+        }
+        var ferry = {
+          position: new google.maps.LatLng(40.703818,-74.014676),
+          map: map,
+          title:"Whitehall Terminal"
+        }
+        var building = {
+          position: new google.maps.LatLng(40.7028748,-74.0139045),
+          map: map,
+          title:"Waffle Building"
+        }
+
+        var goodSights = [bull, ferry, building];
+
+        for (var i = 0; i < goodSights.length(); i++){
+          new google.maps.Marker(goodSights[i]);
+        }
       }
 
       //add the map to the page, when the page is ready
