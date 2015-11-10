@@ -22,7 +22,7 @@
         //set some default options
         var mapOptions = {
           zoom: 16, //very close
-          center: new google.maps.LatLng(40.7029743,-74.0365618) //bull in wall street
+          center: new google.maps.LatLng(40.7055537,-74.0156323) //bull in wall street
         };
 
         //create a new map, and have it populate the #map-canvas html element
@@ -30,24 +30,24 @@
             mapOptions);
 
         var bull = {
-          position: new google.maps.LatLng(40.7029743,-74.0365618),
+          position: new google.maps.LatLng(40.7055537,-74.0156323),
           map: map,
           title:"The Charging Bull"
         }
         var ferry = {
-          position: new google.maps.LatLng(40.703818,-74.014676),
+          position: new google.maps.LatLng(40.703884,-74.0143369),
           map: map,
           title:"Whitehall Terminal"
         }
         var building = {
-          position: new google.maps.LatLng(40.7028748,-74.0139045),
+          position: new google.maps.LatLng(40.702442,-74.0133092),
           map: map,
           title:"Waffle Building"
         }
 
         var goodSights = [bull, ferry, building];
 
-        for (var i = 0; i < goodSights.length(); i++){
+        for (var i = 0; i < goodSights.length; i++){
           new google.maps.Marker(goodSights[i]);
         }
       }
