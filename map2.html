@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="http://cooper-union-maps-proxy.herokuapp.com/js/draw.js"></script>
+    <script>
+
+      $(document).ready(function(){
+
+        var mapOptions = {
+          zoom: 16,
+          center: new google.maps.LatLng(40.7032088,-74.0144847)
+        };
+
+        var positions = [
+          {
+            'title':'Charging Bull',
+            'map': new google.maps.LatLng(40.7055106,-74.0138517),
+            'link':'http://chargingbull.com/',
+            'html':'<img src=https://pbs.twimg.com/profile_images/3627403505/036412c324ea17a0626149f1ac74a642.jpeg />'
+          },
+          {
+            'title':'Waffle Building',
+            'map':new google.maps.LatLng(40.70214,-74.01175),
+            'link':'https://en.wikipedia.org/wiki/1_New_York_Plaza',
+            'html':'<img src=https://lh5.googleusercontent.com/proxy/Lqk-kgxNxl3AsAOUvRXZjZQBMxQqAurLCVJobtjlryS1Ke019AI4NVvl2MBzWfAog-NDGZFkknEitcL08pwaF9Y_QZGwjw=w408-h306 />'
+          },
+          {
+            'title':'Whitehall ferry',
+            'map': new google.maps.LatLng(40.7008338,-74.0127788),
+            'link':'http://www.siferry.com/',
+            'html':'<img src=https://static-s.aa-cdn.net/img/ios/526988506/03d8ced40b5066936466a5b6338af06a />'
+          }
+        ];
+
+        draw('map', mapOptions, positions);
+      });
+
+      // google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+        <style>
+      #map {
+        height:800px;
+        width:800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
