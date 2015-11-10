@@ -120,33 +120,35 @@
           }
           console.log(randNum);
           //pick the clothes accordingly
-          $("#middle").css("background-size","contain" );
-          $("#middle").css("background-repeat","no-repeat" );
-          $("#middle").css("background-position","center" );
+          var container = $("#yourLook");
+          for (var div in container){
+            div.css("background-size","contain" );
+            div.css("background-repeat","no-repeat" );
+            div.css("background-position","center" );
+          }
+
+          // $("#middle").css("background-size","contain" );
+          // $("#middle").css("background-repeat","no-repeat" );
+          // $("#middle").css("background-position","center" );
           $("#middle").css("background-image","url("+clothes.top[weather][randNum]+")" );
 
           randNum = Math.floor(Math.random()*2);
           if (weather === "hot"){
             randNum = Math.floor(Math.random()*3);
           }
-          $("#bottom").css("background-size","contain" );
-          $("#bottom").css("background-repeat","no-repeat" );
-          $("#bottom").css("background-position","center" );
+          // $("#bottom").css("background-size","contain" );
+          // $("#bottom").css("background-repeat","no-repeat" );
+          // $("#bottom").css("background-position","center" );
           $("#bottom").css("background-image","url("+clothes.bottom[weather][randNum]+")" );
 
           randNum = Math.floor(Math.random()*2);
-          $("#shoes").css("background-size","contain" );
-          $("#shoes").css("background-repeat","no-repeat" );
-          $("#shoes").css("background-position","center" );
+          // $("#shoes").css("background-size","contain" );
+          // $("#shoes").css("background-repeat","no-repeat" );
+          // $("#shoes").css("background-position","center" );
           $("#shoes").css("background-image","url("+clothes.shoes[weather][randNum]+")" );
-/*
-          var container = $("yourLook");
-          for each (var div in container){
-            $("#face").css("background-size","contain" );
-            $("#face").css("background-repeat","no-repeat" );
-            $("#face").css("background-position","center" );
-          }
-*/
+
+
+
 
 
           $("#face").css("background-size","contain" );
