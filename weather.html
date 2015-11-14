@@ -118,19 +118,27 @@
           if (weather === "cold"){
             randNum = Math.floor(Math.random()*3);
           }
+
+          // var test = ["item1","item2"]
+          // for (var i in test) {
+          //   console.log(test[i]);
+          // }
+
+
           console.log(randNum);
           //pick the clothes accordingly
           var container = $("#yourLook");
+          //d is the index
           for (var d in container){
-            $(d).css("backgroundSize","contain" );
-            $(d).css("backgroundRepeat","no-repeat" );
-            $(d).css("backgroundPosition","center" );
+            $(container[d]).css("backgroundSize","contain" );
+            $(container[d]).css("backgroundRepeat","no-repeat" );
+            $(container[d]).css("backgroundPosition","center" );
           }
 
           // $("#middle").css("background-size","contain" );
           // $("#middle").css("background-repeat","no-repeat" );
           // $("#middle").css("background-position","center" );
-          $("#middle").css("background-image","url("+clothes.top[weather][randNum]+")" );
+          $("#middle").css("backgroundImage","url("+clothes.top[weather][randNum]+")" );
 
           randNum = Math.floor(Math.random()*2);
           if (weather === "hot"){
@@ -139,13 +147,13 @@
           // $("#bottom").css("background-size","contain" );
           // $("#bottom").css("background-repeat","no-repeat" );
           // $("#bottom").css("background-position","center" );
-          $("#bottom").css("background-image","url("+clothes.bottom[weather][randNum]+")" );
+          $("#bottom").css("backgroundImage","url("+clothes.bottom[weather][randNum]+")" );
 
           randNum = Math.floor(Math.random()*2);
           // $("#shoes").css("background-size","contain" );
           // $("#shoes").css("background-repeat","no-repeat" );
           // $("#shoes").css("background-position","center" );
-          $("#shoes").css("background-image","url("+clothes.shoes[weather][randNum]+")" );
+          $("#shoes").css("backgroundImage","url("+clothes.shoes[weather][randNum]+")" );
 
 
 
