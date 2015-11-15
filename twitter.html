@@ -68,17 +68,44 @@
 
 
       $.getJSON(site,function(response){
-        var max = response.statuses.length;
-        var randNum = Math.floor(Math.random() * max);
-        var text = response.statuses[randNum].text;
+        var numResponses = response.statuses.length;
+        var randomResponse = Math.floor(Math.random() * numResponses);
+        var text = response.statuses[randomResponse].text;
+        var textArray = text.split(" ");
         console.log(text);
+        console.log(textArray);
 
         $('.center').append("<span>asdasdasd</span>");
         $('span').css('border','1px solid black');
         $('.other').css('position','relative');
 
-        $('.other').css('top','-150px');
-        $('.other').css('left','180px');
+
+        var windowWidth = $(window).width();
+        var windowHeight = $(window).height();
+        console.log("window height and width are " + windowHeight + windowWidth);
+        // var ranY = -150;
+        var ranY = Math.random() * windowHeight;
+        var y = ranY+"px";
+        //x needs to
+        var gifHeight = $("#gif").height();
+        var gifWidth = $("#gif").width();
+        console.log("height and width are " + gifHeight + gifWidth);
+
+
+
+        //x just needs to be less than the width of the window
+        var ranX = Math.random() * windowWidth;
+        if (ranY >= 0 && ranY < gifHeight){
+            //x has to be less than 0 or greater than the width
+            if (ranX <= windowWidth/2 && ranX >= windowWidth/2 - gifWidth/2)
+              ranX -= gifWidth/2;
+            else if (ranX > windowWidth/2 && ranX <= windowWidth/2 + gifWidth/2)
+              ranX += gifWidth/2;
+        }
+        //ranX= 180;
+        var x = ranX+"px";
+        $('.other').css('top',y);
+        $('.other').css('left',x);
 
       });
     });
@@ -93,13 +120,15 @@
         background-repeat: no-repeat;
       }
       #gif{
-        width: 400px;
+        /*width: 400px;*/
         height: 200px;
         position: absolute;
         top: 50%; left: 50%;
         margin-left: -200px;
         margin-top: -100px;
+        border: 1px solid blue;
         background-image: url("giphy.gif");
+        background-position: center;
       }
       .martian{
         background-image: url("martian.jpg");
@@ -115,8 +144,9 @@
     </style>
   </head>
   <body>
+    <div class="other">HI</div>
     <div class="center" id="gif">
-      <div class="other">HI</div>
+
     </div>
 
 
