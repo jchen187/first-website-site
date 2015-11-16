@@ -19,34 +19,66 @@
         //find where people are waking up and where they are sleeping
         var site1 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodmorning?count=100";
         var site2 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodnight?count=100";
-        var listOfMarkers = [];
-        $.getJSON(site1, function(response){
 
-          //loop through the responses and find the ones with location
-          for (var i = 0; i < response.length; i++){
+        var switchBtwnDayAndNight = function(site){
+          var listOfMarkers = [];
+          $.getJSON(site, function(response){
 
-            if (response[i].location != null){
-              console.log("not null location")
-              var lat = response[i].location.latitude;
-              var long = response[i].location.longitude;
-              var marker = {
-                'title': response[i].caption.text,
-                'map': new google.maps.LatLng(lat,long),
-                'link': response[i].link,
-                'html': '<img src='+response[i].images.thumbnail.url+' />',
-                // 'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-                'icon':
-                  'path: google.maps.SymbolPath.CIRCLE'
-                  
+            //loop through the responses and find the ones with location
+            for (var i = 0; i < response.length; i++){
+
+              if (response[i].location != null){
+                console.log("not null location")
+                var lat = response[i].location.latitude;
+                var long = response[i].location.longitude;
+                var marker = {
+                  'title': response[i].caption.text,
+                  'map': new google.maps.LatLng(lat,long),
+                  'link': response[i].link,
+                  'html': '<img src='+response[i].images.thumbnail.url+' />',
+                  // 'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                }
+                //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+                listOfMarkers.push(marker);
               }
-              //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
-              listOfMarkers.push(marker);
             }
-          }
-          console.log(listOfMarkers);
+            console.log(listOfMarkers);
 
-          draw('map', mapOptions, listOfMarkers);
-        });
+            draw('map', mapOptions, listOfMarkers);
+
+
+          });
+        }
+
+        function changeSite(){
+          //alternate between day and night
+          if (site === site1){
+            site = site2;
+          }
+          else {
+            site = site1;
+          }
+        }
+
+        var site = site1;
+        setInterval(function(){
+          switchBtwnDayAndNight(site);
+          changeSite();
+          console.log("site is " + site);
+        },5000);
+        /*
+        var intervalIndex = 0;
+        var intervalFunctions = [switchBtwnDayAndNight(site2),switchBtwnDayAndNight(site1)];
+        setInterval(function(){
+          // var index = intervalIndex++ % intervalFunctions.length;
+          var index = intervalIndex++ % 2 + 1;
+          console.log(index);
+          //intervalFunctions[index];
+          var site = "site" + index.toString();
+          switchBtwnDayAndNight(site);
+        },5000);
+        */
+
 
 
 
