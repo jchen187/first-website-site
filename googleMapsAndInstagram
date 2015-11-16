@@ -33,8 +33,13 @@
                 'title': response[i].caption.text,
                 'map': new google.maps.LatLng(lat,long),
                 'link': response[i].link,
-                'html': '<img src='+response[i].images.thumbnail.url+' />'
+                'html': '<img src='+response[i].images.thumbnail.url+' />',
+                // 'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                'icon':
+                  'path: google.maps.SymbolPath.CIRCLE'
+                  
               }
+              //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
               listOfMarkers.push(marker);
             }
           }
