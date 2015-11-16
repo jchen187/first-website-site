@@ -112,15 +112,25 @@
             'left':x
           }
           var word = $('<span>');
-          word.addClass().text(textArray[i]).css(style).appendTo('.anchorLeftCorner');
+          word.addClass().attr('id',i).text(textArray[i]).css(style).appendTo('.anchorLeftCorner');
           word.css('position','absolute');
           // word.toggleClass('shot');
         }
 
-        $('span').click(function () {
-          $(this).toggleClass('shot');
 
-        });
+        var interval = setInterval(rotateWord,1000);
+
+        var i = 0;
+        function rotateWord(){
+          console.log(i);
+          $('span[id="'+i+'"]').toggleClass('shot');
+          i++;
+          if (i > textArray.length)
+            clearInterval(interval);
+        }
+
+        //}
+
       });
     });
 
@@ -147,7 +157,7 @@
       }
       span{
         color: red;
-        transition: transform 0.1s linear;
+        transition: transform 0.3s linear;
         -webkit-transform-origin: 0 0;
         -moz-transform-origin: 0 0;
         -ms-transform-origin: 0 0;
