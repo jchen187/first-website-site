@@ -9,83 +9,99 @@
     <script src="http://cooper-union-maps-proxy.herokuapp.com/js/draw.js"></script>
     <script>
 
-      $(document).ready(function(){
-
+      var map;
+      var initialize = function(){
         var mapOptions = {
           zoom: 2,
           center: new google.maps.LatLng(40.7032088,-74.0144847)
         };
 
-        //find where people are waking up and where they are sleeping
-        var site1 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodmorning?count=100";
-        var site2 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodnight?count=100";
+        map = new google.maps.Map(document.getElementById('map'),
+            mapOptions);
+      }
 
-        var switchBtwnDayAndNight = function(site){
-          var listOfMarkers = [];
-          $.getJSON(site, function(response){
+      google.maps.event.addDomListener(window, 'load', initialize);
 
-            //loop through the responses and find the ones with location
-            for (var i = 0; i < response.length; i++){
+      function changeSite(){
+        //alternate between day and night
+        if (site === site1){
+          site = site2;
+        }
+        else {
+          site = site1;
+        }
+      }
 
-              if (response[i].location != null){
-                console.log("not null location")
-                var lat = response[i].location.latitude;
-                var long = response[i].location.longitude;
-                var marker = {
-                  'title': response[i].caption.text,
-                  'map': new google.maps.LatLng(lat,long),
-                  'link': response[i].link,
-                  'html': '<img src='+response[i].images.thumbnail.url+' />',
-                  // 'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-                }
-                //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
-                listOfMarkers.push(marker);
-              }
+      //store all the markers
+      var listOfMarkers = [];
+
+      //find where people are waking up and where they are sleeping
+      var site1 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodmorning?count=100";
+      var site2 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodnight?count=100";
+
+      var site = site1;
+
+      //Add markers to the site
+      $.getJSON(site, function(response){
+        //loop through the responses and find the ones with location
+          for (var i = 0; i < response.length; i++){
+            if (response[i].location != null){
+              console.log("not null location")
+              var lat = response[i].location.latitude;
+              var long = response[i].location.longitude;
+              var marker = new google.maps.Marker({
+                title: response[i].caption.text,
+                position: new google.maps.LatLng(lat,long),
+                map: map,
+                //'link': response[i].link,
+                //'html': '<img src='+response[i].images.thumbnail.url+' />',
+                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+              });
+              //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+              listOfMarkers.push(marker);
             }
-            console.log(listOfMarkers);
-
-            draw('map', mapOptions, listOfMarkers);
-
-
-          });
-        }
-
-        function changeSite(){
-          //alternate between day and night
-          if (site === site1){
-            site = site2;
           }
-          else {
-            site = site1;
-          }
-        }
+          console.log(listOfMarkers);
+      });
 
-        var site = site1;
-        setInterval(function(){
-          switchBtwnDayAndNight(site);
-          changeSite();
-          console.log("site is " + site);
-        },5000);
+      function changeSite(){
+        console.log(site);
+        //alternate between day and night
+        if (site === site1){
+          site = site2;
+        }
+        else {
+          site = site1;
+        }
+      }
+
+      function clearMarkers() {
+        for (var i = 0; i < listOfMarkers.length; i++) {
+          listOfMarkers[i].setMap(null);
+        }
+        listOfMarkers = [];
+      }
+
+      // setInterval(function(){
+      //   changeSite();
+      //   clearMarkers();
+      // },5000);
+
         /*
         var intervalIndex = 0;
-        var intervalFunctions = [switchBtwnDayAndNight(site2),switchBtwnDayAndNight(site1)];
+        var intervalFunctions = [initialize(site2),initialize(site1)];
         setInterval(function(){
           // var index = intervalIndex++ % intervalFunctions.length;
           var index = intervalIndex++ % 2 + 1;
           console.log(index);
           //intervalFunctions[index];
           var site = "site" + index.toString();
-          switchBtwnDayAndNight(site);
+          initialize(site);
         },5000);
         */
 
-
-
-
         // $("<img>").attr("src",response[0].images.thumbnail.url).appendTo("body");
-      });
 
-      // google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
         <style>
