@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Maps and Instagram</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="http://cooper-union-maps-proxy.herokuapp.com/js/draw.js"></script>
+    <script>
+
+      $(document).ready(function(){
+
+        var mapOptions = {
+          zoom: 2,
+          center: new google.maps.LatLng(40.7032088,-74.0144847)
+        };
+
+        //find where people are waking up and where they are sleeping
+        var site1 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodmorning?count=100";
+        var site2 = "http://cooper-union-instagram-proxy.herokuapp.com/search/tag/goodnight?count=100";
+        var listOfMarkers = [];
+        $.getJSON(site1, function(response){
+
+          //loop through the responses and find the ones with location
+          for (var i = 0; i < response.length; i++){
+
+            if (response[i].location != null){
+              console.log("not null location")
+              var lat = response[i].location.latitude;
+              var long = response[i].location.longitude;
+              var marker = {
+                'title': response[i].caption.text,
+                'map': new google.maps.LatLng(lat,long),
+                'link': response[i].link,
+                'html': '<img src='+response[i].images.thumbnail.url+' />'
+              }
+              listOfMarkers.push(marker);
+            }
+          }
+          console.log(listOfMarkers);
+
+          draw('map', mapOptions, listOfMarkers);
+        });
+
+
+
+        // $("<img>").attr("src",response[0].images.thumbnail.url).appendTo("body");
+      });
+
+      // google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+        <style>
+      #map {
+        height:800px;
+        /*width:800px;*/
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>

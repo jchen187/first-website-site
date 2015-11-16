@@ -1,0 +1,59 @@
+<img src="asdf.jpg" />
+
+<img src=asdf.jpg />
+
+
+var filename = "\"asdf.jpg\"";
+
+var tag = "<img src=" +filename+ "/>";
+
+var css = {
+  "backgroundColor":"orange",
+  "border":"1px solid black"
+};
+
+
+$("<img>").attr("src",filename).css(css);
+
+$("#fancy")
+var $ = function(selector) {
+
+  var selectorType = selector.substring(0,1);
+  if(selectorType === ".") {
+    var result = document.getElementsByClassName(selector)
+  } else {
+    var result = document.getElementById(selector);
+  }
+
+  var response = {
+    "css":function(options, result) {
+      result.attr("style",options)
+    },
+    "getJSON"://get fancy stuff
+    }
+
+  }
+
+  return response;
+
+}
+
+$().getJSON
+
+$(".fancy").css("green").each
+
+
+$("li").click(function(e){
+  e.target.addClass("whatever")
+//  $("li").addClass("whatever")
+})
+
+$("li").each(function(i, item){
+
+  console.log(item)
+});
+
+
+$.each("li", function(i, item){
+
+})
