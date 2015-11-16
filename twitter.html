@@ -118,15 +118,25 @@
 
         $('#gif').css("background-image","url('giphy.gif')");
 
-        var interval = setInterval(rotateWord,1200);
+        var interval = setInterval(rotateWord,1150);
 
         var i = 0;
         function rotateWord(){
           console.log(i);
           $('span[id="'+i+'"]').toggleClass('shot');
           i++;
-          if (i > textArray.length)
+          if (i > textArray.length){
             clearInterval(interval);
+            //remove all the text
+            $('.anchorLeftCorner').empty();
+            $('#gif').remove();
+            //$('h1').css("display","block!important");
+            $('h1').removeClass('hide');
+            $('body')
+              .css("background-image","url('http://www.hdwallpaper.nu/wp-content/uploads/2015/10/007SpectreFanArtByDCDesigns.png')")
+              .css("background-size","cover")
+              .css("background-repeat","no-repeat");
+          }
         }
 
       });
@@ -148,7 +158,7 @@
         top: 50%; left: 50%;
         margin-left: -200px;
         margin-top: -100px;
-        border: 1px solid blue;
+        /*border: 1px solid blue;*/
         /*background-image: url("giphy.gif");*/
         background-position: center;
 
@@ -168,25 +178,25 @@
         transform: rotate(90deg);
       }
 
-      .martian{
-        background-image: url("martian.jpg");
-        border: 1px solid blue;
-      }
-      .spectre{
-        background-image: url("james bond.jpg");
-        border: 1px solid black;
-      }
-      p {
+      h1 {
         text-align: center;
+        font-family: fantasy;
+        color: white;
+      }
+      h1:first-child{
+        font-size: 30px;
+      }
+      .hide{
+        /*display:none;*/
+        color:transparent;
       }
     </style>
   </head>
   <body>
     <div class="anchorLeftCorner"></div>
-    <div class="center" id="gif">
-
-    </div>
-
+    <h1 class="hide">10/10!</h1>
+    <div class="center" id="gif"></div>
+    <h1 class="hide">Still haven't watched this yet? What are you waiting for?</h1>
 
     <!-- <div id="top" class="martian">
 
