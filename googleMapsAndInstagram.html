@@ -46,54 +46,60 @@
       $.getJSON(site, function(response){
         //loop through the responses and find the ones with location
           for (var i = 0; i < response.length; i++){
-            if (response[i].location != null){
-              console.log("not null location")
-              var lat = response[i].location.latitude;
-              var long = response[i].location.longitude;
-              var location = new google.maps.LatLng(lat,long);
-              var marker = new google.maps.Marker({
-                title: response[i].caption.text,
-                position: location,
-                map: map,
-                //'link': response[i].link,
-                //'html': '<img src='+response[i].images.thumbnail.url+' />',
-                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-              });
-              var template = '<div class="content">'+'<img src='+response[i].images.thumbnail.url+' />'+'<a href='+response[i].link+'>'+response[i].title+'</a></div>';
-              //var win = template.replace('{{content}}', response[i].title);
-              //win = template.replace('{{link}}', response[i].link);
-              //win = template.replace('{{html}}', '<img src='+response[i].images.thumbnail.url+' />');
+            //can create a function out side and call it
+//encapsulated anonymous function - put in a function because the part with the marker is async and takes longer, so you will be done with the for loop before you reach
+            (function(i){
+              if(response[i].location != null){
+                console.log("not null location")
+                var lat = response[i].location.latitude;
+                var long = response[i].location.longitude;
+                var location = new google.maps.LatLng(lat,long);
+                var marker = new google.maps.Marker({
+                  title: response[i].caption.text,
+                  position: location,
+                  map: map,
+                  //'link': response[i].link,
+                  //'html': '<img src='+response[i].images.thumbnail.url+' />',
+                  icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                });
+                var template = '<div class="content">'+'<img src='+response[i].images.thumbnail.url+' />'+'<a href='+response[i].link+'>'+response[i].title+'</a></div>';
+                //var win = template.replace('{{content}}', response[i].title);
+                //win = template.replace('{{link}}', response[i].link);
+                //win = template.replace('{{html}}', '<img src='+response[i].images.thumbnail.url+' />');
 
-              var infowindow = new google.maps.InfoWindow({
-                content: template,
-                maxWidth: 200
-              });
+                var infowindow = new google.maps.InfoWindow({
+                  content: template,
+                  maxWidth: 200
+                });
 
-              // google.maps.event.addListener(marker, 'click',
-              //     function(event)
-              //     {
-              //         //map.panTo(event.latLng);
-              //         //map.setZoom(5);
-              //         infowindow.open(map, this);
-              //     }
-              // );
-              marker.addListener('click', function() {
-                infowindow.open(map, this);
-              });
+                // google.maps.event.addListener(marker, 'click',
+                //     function(event)
+                //     {
+                //         //map.panTo(event.latLng);
+                //         //map.setZoom(5);
+                //         infowindow.open(map, this);
+                //     }
+                // );
+                marker.addListener('click', function() {
+                  infowindow.open(map, this);
+                });
 
-              listOfMarkers.push(marker);
-              listOfInfoWindows.push(infowindow);
+                listOfMarkers.push(marker);
+                listOfInfoWindows.push(infowindow);
 
-              // google.maps.event.addListener(marker, 'click', function() {
-              //         this.infowindow.open(map, this);
-              // });
+                // google.maps.event.addListener(marker, 'click', function() {
+                //         this.infowindow.open(map, this);
+                // });
 
-              //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+                //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
 
-            }
+              }
+            })(i);
           }
           console.log(listOfMarkers);
       });
+
+      //(function(asdf){ /* */}(asdf))
 
       function changeSite(){
         console.log(site);
